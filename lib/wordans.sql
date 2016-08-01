@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 06 Juillet 2016 à 10:30
+-- Gï¿½nï¿½rï¿½ le :  Mer 06 Juillet 2016 ï¿½ 10:30
 -- Version du serveur :  10.0.17-MariaDB
 -- Version de PHP :  5.6.14
 
@@ -17,16 +17,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `crawl`
+-- Base de donnï¿½es :  `crawl`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `zazapapillon`
+-- Structure de la table `wordans`
 --
 
-CREATE TABLE `zazapapillon` (
+CREATE TABLE `wordans` (
   `productId` varchar(15) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `link` varchar(600) NOT NULL,
@@ -43,13 +43,13 @@ CREATE TABLE `zazapapillon` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Index pour les tables exportées
+-- Index pour les tables exportï¿½es
 --
 
 --
--- Index pour la table `zazapapillon`
+-- Index pour la table `wordans`
 --
-ALTER TABLE `zazapapillon`
+ALTER TABLE `wordans`
   ADD PRIMARY KEY (`productId`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
