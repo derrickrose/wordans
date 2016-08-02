@@ -57,7 +57,7 @@ public class FirstVersionIHM extends JFrame {
       SwingUtilities.invokeLater(new Runnable() {
          @Override
          public void run() {
-            FirstVersionIHM fvihm = new FirstVersionIHM("Zazapapillon crawler");
+            FirstVersionIHM fvihm = new FirstVersionIHM("Wordans crawler");
             fvihm.setOpacity((float) 0.0);
          }
       });

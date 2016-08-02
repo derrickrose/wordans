@@ -10,7 +10,7 @@ public class Crawler extends Thread {
    public void run() {
       String linkToCrawl = FormHandler.getForm().getLinkToCrawl();
       if (StringUtils.isBlank(linkToCrawl)) {
-         linkToCrawl = "http://www.zazapapillon.fr/";
+         linkToCrawl = "https://www.wordans.fr/";
       }
       // new TreatCrawl(linkToCrawl);
 

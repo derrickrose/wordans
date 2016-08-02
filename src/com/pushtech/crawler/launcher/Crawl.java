@@ -37,9 +37,7 @@ public class Crawl {
          } else if (PageType.isListingPage(page)) {
             listingCrawling(page);
          }
-         // else if (entryPointUrl.equals("http://www.zazapapillon.fr/") || entryPointUrl.endsWith("http://www.zazapapillon.fr/")) {
-         // homeCrawling(page);// home page � faire
-         // }
+
          else if (PageType.isHomePage(page)) {
             homeCrawling(page);
          }
@@ -67,8 +65,6 @@ public class Crawl {
       Page page = null;
       HttpResponse response = null;
       HashMap<String, String> headers = new HashMap<String, String>();
-      headers.put("Cookie", "frontend=9ela5n93h9g5prtac32r9bqpl7; newsletter=true; cookie_consent=accepted; compte=110065");
-      headers.put("Host", "www.zazapapillon.fr");
       response = ConnectionHandler.getResponse(url, null, headers, methodeType);
       page = (Page) ParserFactory.getAppropriateParsingTemplate(response).parse(url, response, null);
 
