@@ -13,6 +13,9 @@ public class ConnectionHandler {
 			HashMap<String, String> headers, EngineContext.MethodType method) {
 
 		HttpResponse response = null;
+		
+		
+		
 		EngineConnection engineConnection = EngineConnection
 				.getDefaultEngineConnection();
 		EngineContext engineContext = EngineContext.getEngineContext(url,

@@ -50,6 +50,7 @@ public class Crawl {
             }
          });
          logger.fatal(e.getMessage());
+         e.printStackTrace();
       }
       SwingUtilities.invokeLater(new Runnable() {
          @Override
@@ -65,6 +66,7 @@ public class Crawl {
       Page page = null;
       HttpResponse response = null;
       HashMap<String, String> headers = new HashMap<String, String>();
+      
       response = ConnectionHandler.getResponse(url, null, headers, methodeType);
       page = (Page) ParserFactory.getAppropriateParsingTemplate(response).parse(url, response, null);
 

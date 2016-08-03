@@ -5,6 +5,8 @@ import com.pushtech.crawler.beans.Page;
 public class PageType {
 
 	public static boolean isProductPage(Page page) {
+		
+		
 		if (page != null)
 			return page.getDoc().select(Selectors.PRODUCT_PAGE_IDENTIFIER)
 					.first() != null;
