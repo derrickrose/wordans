@@ -66,10 +66,10 @@ public class Crawl {
       Page page = null;
       HttpResponse response = null;
       HashMap<String, String> headers = new HashMap<String, String>();
-      
+
       headers.put("Host", "www.wordans.fr");
       headers.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0");
-      
+
       response = ConnectionHandler.getResponse(url, null, headers, methodeType);
       page = (Page) ParserFactory.getAppropriateParsingTemplate(response).parse(url, response, null);
 
@@ -79,7 +79,16 @@ public class Crawl {
    private void offerCrawling(Page page, String productPath) {
       Product product = new CrawlOffer().doAction(page);
       System.out.println("Link : " + productPath);
-      String productId = CrawlListing.getProductId(page.getDoc());
+      
+      
+      String productId = null;
+      productId = getProductIdFromLink();
+      logger.debug("Product Id : " + productId);
+      product.setId(productId);
+      
+      
+      
+      String productId = CrawlListing.getProductId(page.getDoc())
       System.out.println("Product Id :" + productId);
       product.setLink(productPath);
       product.setId(productId);

@@ -125,6 +125,19 @@ public class CrawlOffer {
       return productId.replaceAll("[^\\d]", "");
    }
 
+   public static String getProductIdFromLink(final String link) throws Exception {
+      String productId = null;
+      if (StringUtils.isNotEmpty(link)) {
+         productId = link;
+         productId = link.substring(link.lastIndexOf("-"));
+         if (!productId.matches("\\d+")) {
+            logger.error("Invalid productId : |" + productId + "| set to null");
+            productId = null;
+         }
+      }
+      return productId;
+   }
+
    // example
    private String getName(final Document productPageDocument) throws Exception {
       final Element nameElement = findElement(productPageDocument, Selectors.PRODUCT_NAME); // TODO
