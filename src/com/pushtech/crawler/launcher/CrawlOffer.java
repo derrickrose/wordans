@@ -142,7 +142,7 @@ public class CrawlOffer {
 
    private String getDescription(final Document productPageDocument) throws Exception {
       final Element descriptionElement = findElement(productPageDocument, Selectors.PRODUCT_DESCRIPTION); // TODO
-      String description = fromAttribute(descriptionElement, "content");
+      String description = fromElementText(descriptionElement);
       description = validateField(description, "Description");
       return description;
    }
