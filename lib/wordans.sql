@@ -31,13 +31,13 @@ CREATE TABLE `wordans` (
   `Name` varchar(255) NOT NULL,
   `link` varchar(600) NOT NULL,
   `image` varchar(600) NOT NULL,
-  `description` varchar(600) NOT NULL,
+  `description` varchar(2500) NOT NULL,
   `motclef` varchar(600) NOT NULL,
   `price` float NOT NULL,
   `shippingCost` float NOT NULL,
   `shippingDealy` int(3) NOT NULL,
   `brand` varchar(50) DEFAULT NULL,
-  `category` varchar(50) DEFAULT NULL,
+  `category` varchar(150) DEFAULT NULL,
   `quantity` int(10) DEFAULT NULL,
   `update_time` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

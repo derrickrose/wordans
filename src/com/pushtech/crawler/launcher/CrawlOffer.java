@@ -129,7 +129,7 @@ public class CrawlOffer {
       String productId = null;
       if (StringUtils.isNotEmpty(link)) {
          productId = link;
-         productId = link.substring(link.lastIndexOf("-"));
+         productId = link.substring(link.lastIndexOf("-") + 1);
          if (!productId.matches("\\d+")) {
             logger.error("Invalid productId : |" + productId + "| set to null");
             productId = null;

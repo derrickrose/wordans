@@ -1,6 +1,7 @@
 package com.pushtech.crawler.launcher;
 
 import static com.pushtech.crawler.launcher.CrawlListing.getNextPageLink;
+import static com.pushtech.crawler.launcher.CrawlOffer.getProductIdFromLink;
 import static com.pushtech.crawler.logging.LoggingHelper.logger;
 
 import java.util.ArrayList;
@@ -79,17 +80,16 @@ public class Crawl {
    private void offerCrawling(Page page, String productPath) {
       Product product = new CrawlOffer().doAction(page);
       System.out.println("Link : " + productPath);
-      
-      
+
       String productId = null;
-      productId = getProductIdFromLink();
+      try {
+         productId = getProductIdFromLink(productPath);
+      } catch (Exception e) {
+         logger.error("Error on getting Id from link");
+      }
       logger.debug("Product Id : " + productId);
       product.setId(productId);
-      
-      
-      
-      String productId = CrawlListing.getProductId(page.getDoc())
-      System.out.println("Product Id :" + productId);
+
       product.setLink(productPath);
       product.setId(productId);
       DAOFactory daoFactory = new DataBaseDAO().getFactoryInstance();
