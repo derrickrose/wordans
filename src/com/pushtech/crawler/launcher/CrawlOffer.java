@@ -24,6 +24,7 @@ import org.jsoup.select.Elements;
 
 import com.pushtech.commons.Product;
 import com.pushtech.commons.SpecialChar;
+import com.pushtech.commons.UriHandler;
 import com.pushtech.crawler.beans.Page;
 
 public class CrawlOffer {
@@ -194,7 +195,7 @@ public class CrawlOffer {
       final Element imageElement = findElement(productPageDocument, Selectors.PRODUCT_IMAGE); // TODO
       String image = fromAttribute(imageElement, "src");
       image = validateField(image, "Image");
-      image = cleanPath(image);
+      image = UriHandler.cleanPath(image);
       return image;
    }
 
@@ -395,13 +396,6 @@ public class CrawlOffer {
          return StringUtils.EMPTY;
       }
       return value;
-   }
-
-   private static String cleanPath(String path) {
-      if (!StringUtils.startsWith(path, "http:")) {
-         return "http://www.alcodistributions.fr" + path;
-      }
-      return path;
    }
 
 }
