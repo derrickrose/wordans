@@ -27,7 +27,7 @@ import com.pushtech.commons.SpecialChar;
 import com.pushtech.crawler.beans.Page;
 
 public class CrawlOffer {
-   private static final Locale CURRENT_LOCALE = Locale.getDefault();
+   private static final Locale CURRENT_LOCALE = Locale.FRENCH;
 
    public Product doAction(Page page) {
 
@@ -202,7 +202,7 @@ public class CrawlOffer {
       final Element priceElement = findElement(element, Selectors.PRODUCT_PRICE);
       String priceRaw = priceElement.text();
       priceRaw = validateField(priceRaw, "Price", 1);
-      return parseLocalizedPrice(priceRaw);
+      return parseLocalizedPrice(priceRaw.replace(".", ","));
    }
 
    private float getShippingCost(final Element element) {
@@ -339,6 +339,7 @@ public class CrawlOffer {
 
    private float parseLocalizedPrice(final String priceRaw) {
       final String priceText = cleanPrice(priceRaw);
+      // logger.warn("price test " + priceRaw);
       if (StringUtils.isNotBlank(priceText)) {
          try {
             NumberFormat priceFormat = NumberFormat.getNumberInstance(CURRENT_LOCALE);
