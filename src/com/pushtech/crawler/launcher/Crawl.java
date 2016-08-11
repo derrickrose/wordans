@@ -1,7 +1,6 @@
 package com.pushtech.crawler.launcher;
 
 import static com.pushtech.crawler.launcher.CrawlListing.getNextPageLink;
-import static com.pushtech.crawler.launcher.CrawlOffer.getProductIdFromLink;
 import static com.pushtech.crawler.logging.LoggingHelper.logger;
 
 import java.util.ArrayList;
@@ -81,17 +80,21 @@ public class Crawl {
       Product product = new CrawlOffer().doAction(page);
       System.out.println("Link : " + productPath);
 
-      String productId = null;
-      try {
-         productId = getProductIdFromLink(productPath);
-      } catch (Exception e) {
-         logger.error("Error on getting Id from link");
-      }
-      logger.debug("Product Id : " + productId);
-      product.setId(productId);
+      // String productId = null;
+      // try {
+      // productId = getProductIdFromLink(productPath);
+      // } catch (Exception e) {
+      // logger.error("Error on getting Id from link");
+      // }
+      // logger.debug("Product Id : " + productId);
+      // product.setId(productId);
 
       product.setLink(productPath);
-      product.setId(productId);
+      // product.setId(productId);
+
+      VariantParser variantExtractor = VariantParser.getExtractor(product, page);
+      variantExtractor.doAction(page);
+
       DAOFactory daoFactory = new DataBaseDAO().getFactoryInstance();
       AbstractDAOEntity daoEntity = new ProductDAO(daoFactory);
       daoEntity.updateEntity(product);
