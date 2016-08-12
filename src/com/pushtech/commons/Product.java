@@ -1,6 +1,6 @@
 package com.pushtech.commons;
 
-public class Product {
+public class Product implements Cloneable {
 
 	private String id = null, parentId = null;
 	private String name = null, link = null, description = null, brand = null,
@@ -9,7 +9,24 @@ public class Product {
 	private String updated = null;
 	private float price = -1f, shippingCost = -1f, previousPrice = -1;
 	private int shippingDelay = 0, quantity = 0;
+	   private String colorName = null;
+	   private String SizeName = null;
 
+	   public String getColorName() {
+	      return colorName;
+	   }
+
+	   public void setColorName(String colorName) {
+	      this.colorName = colorName;
+	   }
+
+	   public String getSizeName() {
+	      return SizeName;
+	   }
+
+	   public void setSizeName(String sizeName) {
+	      SizeName = sizeName;
+	   }
 	public void setKeyWord(String keyWord) {
 		this.keyWord = keyWord;
 	}
@@ -132,5 +149,15 @@ public class Product {
 
 	public String toString() {
 		return "Product : " + id + " - " + name;
+	}
+
+	public Object clone() {
+		Product product = null;
+		try {
+			product = (Product) super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return product;
 	}
 }

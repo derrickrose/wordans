@@ -23,6 +23,8 @@ public class FirstVersionIHM extends JFrame {
       this.setTitle(strTitle);
       this.setSize(700, 240);
       this.setLocationRelativeTo(null);
+      
+      
       this.setResizable(false);
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       JLabel title = new JLabel(" ");

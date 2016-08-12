@@ -8,7 +8,7 @@ public class Selectors {
    public static final String PRODUCT_LINK = "p.product-name>a";
    public static final String PRODUCT_DESCRIPTION = ".details";
    public static final String PRODUCT_KEYWORDS = "meta[name=keywords]";
-   public static final String PRODUCT_IDENTIFIER = ".details > div:contains(eference)";
+   public static final String PRODUCT_IDENTIFIER = "input[name=id]";
    public static final String PRODUCT_CATEGORY = ".show-page-back";// listing
    public static final String PRODUCT_IMAGE = "#product-img";
    public static final String PRODUCT_PRICE = ".cost > strong";
@@ -24,13 +24,15 @@ public class Selectors {
    public static final String COLORED_IMAGE = "img_original";
 
    public static final String SIZES_ARRAY = "sizes";
+   public static final String SIZE_OBJECT = "size";
    public static final String SIZE_ID = "id";
    public static final String SIZE_NAME = "name";
    public static final String SIZE_ORDER = "order";
    public static final String SIZE_QUANTITY = "qty";
    public static final String SIZE_ON_SALE = "on_sale";
 
-   public static final String SIZE_INTERVALS_ARRAY = "sizes";
+   public static final String SIZE_INTERVALS_ARRAY = "intervals";
+   public static final String SIZE_INTERVAL = "interval";
    public static final String SIZE_INTERVAL_ID = "id";
    public static final String SIZE_INTERVAL_NAME = "name";
    public static final String SIZE_INTERVAL_MIN = "min_qty";

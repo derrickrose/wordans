@@ -9,6 +9,7 @@ public class CustomJButton extends AbstractCustomJcomponent{
 	
 	CustomJButton(String label){
 		this.component = new JButton(label);
+		
 		this.add(component);
 	}
 	

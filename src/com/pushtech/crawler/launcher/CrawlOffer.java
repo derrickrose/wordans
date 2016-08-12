@@ -107,23 +107,26 @@ public class CrawlOffer {
       product.setQuantity(quantity);
       logger.debug("Quantity : " + quantity);
 
+      String productId = null;
+      try {
+    	  productId = getProductId(productPageDocument);
+      } catch (Exception e) {
+         logger.error(e.getMessage() + " on " + page.getUrl());
+      }
+      product.setId(productId);
+      product.setParentId(productId);
+      logger.debug("Product id : " + productId);
+      
       return product;
    }
 
    private String getProductId(final Document productPageDocument) throws Exception {
-      final Elements productIdElements = productPageDocument.select(Selectors.PRODUCT_IDENTIFIER);
-      String productIdRaw = null;
-      for (Element element : productIdElements) {
-         productIdRaw = element.text();
-         if (productIdRaw.contains("rticle")) {
-            break;
-         }
-      }
-      // TODO
-      String productId = productIdRaw;
+      final Element productIdElement = productPageDocument.select(Selectors.PRODUCT_IDENTIFIER).first();
+      String productId= null;
+      if(productIdElement!=null)
+    	  productId = fromAttribute(productIdElement, "value");
       productId = validateField(productId, "Product Id");
-      productId = productId.replace("Cod. Article ", "").trim();
-      return productId.replaceAll("[^\\d]", "");
+      return productId;
    }
 
    public static String getProductIdFromLink(final String link) throws Exception {
