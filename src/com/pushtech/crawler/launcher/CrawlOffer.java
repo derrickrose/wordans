@@ -20,7 +20,6 @@ import org.joda.time.format.PeriodFormat;
 import org.joda.time.format.PeriodFormatter;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import com.pushtech.commons.Product;
 import com.pushtech.commons.SpecialChar;
@@ -109,22 +108,21 @@ public class CrawlOffer {
 
       String productId = null;
       try {
-    	  productId = getProductId(productPageDocument);
+         productId = getProductId(productPageDocument);
       } catch (Exception e) {
          logger.error(e.getMessage() + " on " + page.getUrl());
       }
       product.setId(productId);
       product.setParentId(productId);
       logger.debug("Product id : " + productId);
-      
+
       return product;
    }
 
    private String getProductId(final Document productPageDocument) throws Exception {
       final Element productIdElement = productPageDocument.select(Selectors.PRODUCT_IDENTIFIER).first();
-      String productId= null;
-      if(productIdElement!=null)
-    	  productId = fromAttribute(productIdElement, "value");
+      String productId = null;
+      if (productIdElement != null) productId = fromAttribute(productIdElement, "value");
       productId = validateField(productId, "Product Id");
       return productId;
    }
