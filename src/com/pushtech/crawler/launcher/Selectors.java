@@ -20,6 +20,7 @@ public class Selectors {
    // variant json
    public static final String COLOR_OBJECT = "color";
    public static final String COLOR_ID = "id";
+   public static final String COLOR_URI = "uri";
    public static final String COLOR_NAME = "name";
    public static final String COLORED_IMAGE = "img_original";
 
