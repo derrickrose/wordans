@@ -92,15 +92,16 @@ public class Crawl {
       product.setLink(productPath);
       // product.setId(productId);
 
-      DAOFactory daoFactory = new DataBaseDAO().getFactoryInstance();
-      AbstractDAOEntity daoEntity = new ProductDAO(daoFactory);
       VariantParser variantExtractor = VariantParser.getExtractor(product, page);
       ArrayList<Product> variantList = variantExtractor.doAction(page);
       for (Product variantProduct : variantList) {
+         DAOFactory daoFactory = new DataBaseDAO().getFactoryInstance();
+         AbstractDAOEntity daoEntity = new ProductDAO(daoFactory);
          daoEntity.updateEntity(variantProduct);
-
       }
-      if (variantList.size() > 0) {
+      if (variantList.size() > 1) {
+         DAOFactory daoFactory = new DataBaseDAO().getFactoryInstance();
+         AbstractDAOEntity daoEntity = new ProductDAO(daoFactory);
          Product ProductElement = variantList.get(0);
          ProductElement.setId(ProductElement.getParentId());
          daoEntity.updateEntity(ProductElement);

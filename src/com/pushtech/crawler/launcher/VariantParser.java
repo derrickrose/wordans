@@ -157,7 +157,7 @@ public class VariantParser {
                   // min = Integer.parseInt(intervalId);
                   // }
                }
-               variantProduct.setName(product.getName() + " " + colorName + " " + sizeName);
+               variantProduct.setName(product.getName());
                variantProduct.setId(product.getId() + "-" + colorId + "-" + sizeId);
                variantProduct.setPrice(parseLocalizedPrice(priceRaw.replace(".", ",")));
                if (variantList == null) variantList = new ArrayList<Product>();
