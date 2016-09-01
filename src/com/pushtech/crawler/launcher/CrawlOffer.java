@@ -143,7 +143,7 @@ public class CrawlOffer {
    // example
    private String getName(final Document productPageDocument) throws Exception {
       final Element nameElement = findElement(productPageDocument, Selectors.PRODUCT_NAME); // TODO
-      String name = fromElementText(nameElement);
+      String name = fromAttribute(nameElement, "content");
       name = validateField(name, "Name");
       return name;
    }

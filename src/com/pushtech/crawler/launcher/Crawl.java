@@ -80,20 +80,11 @@ public class Crawl {
       Product product = new CrawlOffer().doAction(page);
       System.out.println("Link : " + productPath);
 
-      // String productId = null;
-      // try {
-      // productId = getProductIdFromLink(productPath);
-      // } catch (Exception e) {
-      // logger.error("Error on getting Id from link");
-      // }
-      // logger.debug("Product Id : " + productId);
-      // product.setId(productId);
-
       product.setLink(productPath);
-      // product.setId(productId);
 
       VariantParser variantExtractor = VariantParser.getExtractor(product, page);
       ArrayList<Product> variantList = variantExtractor.doAction(page);
+
       for (Product variantProduct : variantList) {
          DAOFactory daoFactory = new DataBaseDAO().getFactoryInstance();
          AbstractDAOEntity daoEntity = new ProductDAO(daoFactory);
