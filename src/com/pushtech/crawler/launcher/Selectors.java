@@ -4,7 +4,7 @@ public class Selectors {
 
    // product page
    public static final String PRODUCT_PAGE_IDENTIFIER = ".comment-block";
-   public static final String PRODUCT_NAME = "span[itemprop=name]:has(a)";
+   public static final String PRODUCT_NAME = "span[itemprop=name]";
    public static final String PRODUCT_LINK = "p.product-name>a";
    public static final String PRODUCT_DESCRIPTION = ".details";
    public static final String PRODUCT_KEYWORDS = "meta[name=keywords]";
