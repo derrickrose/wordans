@@ -85,17 +85,18 @@ public class Crawl {
       VariantParser variantExtractor = VariantParser.getExtractor(product, page);
       ArrayList<Product> variantList = variantExtractor.doAction(page);
       int quantity = 0;
-      for (Product variantProduct : variantList) {
+      for (int i = 0; i < variantList.size(); i++) {
          DAOFactory daoFactory = new DataBaseDAO().getFactoryInstance();
          AbstractDAOEntity daoEntity = new ProductDAO(daoFactory);
-         daoEntity.updateEntity(variantProduct);
-         quantity += variantProduct.getQuantity();
+         daoEntity.updateEntity(variantList.get(i));
+         quantity += variantList.get(i).getQuantity();
       }
       if (variantList.size() > 1 && quantity > 0) {
          DAOFactory daoFactory = new DataBaseDAO().getFactoryInstance();
          AbstractDAOEntity daoEntity = new ProductDAO(daoFactory);
          Product ProductElement = variantList.get(0);
          ProductElement.setId(ProductElement.getParentId());
+         ProductElement.setParentId("");
          ProductElement.setColorName("");
          ProductElement.setSizeName("");
          ProductElement.setQuantity(quantity);
